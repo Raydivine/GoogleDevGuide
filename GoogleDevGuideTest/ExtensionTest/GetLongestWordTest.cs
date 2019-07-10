@@ -1,18 +1,13 @@
-using GoogleDevGuide;
-using GoogleDevGuide.Interface;
+using GoogleDevGuide.Extension;
 using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace GoogleDevGuideTest
 {
-    public class PuzzleSolverTest : IDisposable
+    public class GetLongestWordTest : IDisposable
     {
-        IPuzzleSolver _solver;
-
-        public PuzzleSolverTest()
+        public GetLongestWordTest()
         {
-            _solver = new PuzzleSolver();
         }
 
         public void Dispose()
@@ -29,7 +24,7 @@ namespace GoogleDevGuideTest
             string target = "abppplee";
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
 
-            var result = _solver.GetLongestWordInSequence(target, words);
+            var result = target.GetLongestSubSequence(words);
 
             Assert.Equal("apple", result);
         }
@@ -40,7 +35,7 @@ namespace GoogleDevGuideTest
             string target = "XXXXXXXXXX";
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
 
-            var result = _solver.GetLongestWordInSequence(target, words);
+            var result = target.GetLongestSubSequence(words);
 
             Assert.Null(result);
         }
@@ -51,7 +46,7 @@ namespace GoogleDevGuideTest
             string target = null;
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
 
-            var result = _solver.GetLongestWordInSequence(target, words);
+            var result = target.GetLongestSubSequence(words);
 
             Assert.Null(result);
         }
@@ -62,7 +57,7 @@ namespace GoogleDevGuideTest
             string target = "abppplee";
             string[] words = {};
 
-            var result = _solver.GetLongestWordInSequence(target, words);
+            var result = target.GetLongestSubSequence(words);
 
             Assert.Null(result);
         }
