@@ -1,13 +1,19 @@
 ﻿using GoogleDevGuide.Interface;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GoogleDevGuide
 {
-    class PuzzleSolver : IPuzzleSolver
+    public class PuzzleSolver : IPuzzleSolver
     {
-        public string FindLongestWordInSubsequence(string target, List<string> words)
+        public string GetLongestWordInSequence(string target, string[] words)
         {
-            string result = string.Empty;
+            return GetLongestWordInSequence(target, words.ToList());
+        }
+
+        public string GetLongestWordInSequence(string target, List<string> words)
+        {
+            string result = null;
 
             return result;
         }
