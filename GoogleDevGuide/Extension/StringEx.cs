@@ -16,5 +16,25 @@ namespace GoogleDevGuide.Extension
         
             return result;
         }
+
+        public static bool IsSubSequence(this string str, string word)
+        {
+            string result = null;
+            int j = 0;
+
+            if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(word))
+                return false;
+
+            for (int i = 0; i < str.Length && j < word.Length; i++)
+            {
+                if (word[j] == str[i])
+                {
+                    result += word[j];
+                    j++;
+                }
+            }
+
+            return string.Equals(result, word);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace GoogleDevGuideTest
         /// MethodName_StateUnderTest_ExpectedBehavior
         /// </summary>
         [Fact]
-        public void GetLongestWordInSequence_Functional_returnResult()
+        public void GetLongestWordInSequence_Functional_ReturnResult()
         {
             string target = "abppplee";
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
@@ -30,7 +30,7 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
-        public void GetLongestWordInSequence_nothingMatch_returnNull()
+        public void GetLongestWordInSequence_NothingMatch_ReturnNull()
         {
             string target = "XXXXXXXXXX";
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
@@ -52,7 +52,7 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
-        public void GetLongestWordInSequence_wordsAreEmpty_ReturnNull()
+        public void GetLongestWordInSequence_WordsAreEmpty_ReturnNull()
         {
             string target = "abppplee";
             string[] words = {};
@@ -60,6 +60,56 @@ namespace GoogleDevGuideTest
             var result = target.GetLongestSubSequence(words);
 
             Assert.Null(result);
+        }
+
+        [Fact]
+        public void GetLongestWordInSequence_WordsAreNull_ThrowEx()
+        {
+            string target = null;
+            string[] words = null;
+
+            Assert.Throws<ArgumentNullException>(() => target.GetLongestSubSequence(words));
+        }
+
+        [Fact]
+        public void IsSubSequence_Match_ReturnTrue()
+        {
+            string target = "abppplee";
+            string word = "apple";
+
+            var result = target.IsSubSequence(word);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsSubSequence_NotMatch_ReturnFalse()
+        {
+            string target = "abppplee";
+            string word = "appled";
+
+            var result = target.IsSubSequence(word);
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IsSubSequence_WordIsNull_ReturnFalse()
+        {
+            string target = "abppplee";
+            string word = null;
+
+            var result = target.IsSubSequence(word);
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IsSubSequence_BothIsNull_ReturnFalse()
+        {
+            string target = null;
+            string word = null;
+
+            var result = target.IsSubSequence(word);
+            Assert.False(result);
         }
     }
 }
