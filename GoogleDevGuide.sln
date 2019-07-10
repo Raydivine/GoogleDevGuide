@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleDevGuide", "GoogleDevGuide\GoogleDevGuide.csproj", "{D97515BD-4EC4-4465-90A5-8EE0BC697A44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleDevGuideTest", "GoogleDevGuideTest\GoogleDevGuideTest.csproj", "{5F2F2251-DE37-41E3-BEEB-A0974E2D25F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D97515BD-4EC4-4465-90A5-8EE0BC697A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97515BD-4EC4-4465-90A5-8EE0BC697A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97515BD-4EC4-4465-90A5-8EE0BC697A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97515BD-4EC4-4465-90A5-8EE0BC697A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2F2251-DE37-41E3-BEEB-A0974E2D25F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2F2251-DE37-41E3-BEEB-A0974E2D25F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2F2251-DE37-41E3-BEEB-A0974E2D25F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2F2251-DE37-41E3-BEEB-A0974E2D25F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5DCEB114-A57C-47BB-8020-F9A686EAE3EF}
+	EndGlobalSection
+EndGlobal
