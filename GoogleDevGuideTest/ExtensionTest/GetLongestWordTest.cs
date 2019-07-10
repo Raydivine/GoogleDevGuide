@@ -19,7 +19,7 @@ namespace GoogleDevGuideTest
         /// MethodName_StateUnderTest_ExpectedBehavior
         /// </summary>
         [Fact]
-        public void GetLongestWordInSequence_Functional_ReturnResult()
+        public void GetLongestSubSequence_Functional_ReturnResult()
         {
             string target = "abppplee";
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
@@ -30,40 +30,40 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
-        public void GetLongestWordInSequence_NothingMatch_ReturnNull()
+        public void GetLongestSubSequence_NothingMatch_ReturnNull()
         {
             string target = "XXXXXXXXXX";
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
 
             var result = target.GetLongestSubSequence(words);
 
-            Assert.Null(result);
+            Assert.Empty(result);
         }
 
         [Fact]
-        public void GetLongestWordInSequence_TargetIsNull_ReturnNull()
+        public void GetLongestSubSequence_TargetIsNull_ReturnNull()
         {
             string target = null;
             string[] words = { "able", "ale", "apple", "bale", "kangaroo" };
 
             var result = target.GetLongestSubSequence(words);
 
-            Assert.Null(result);
+            Assert.Empty(result);
         }
 
         [Fact]
-        public void GetLongestWordInSequence_WordsAreEmpty_ReturnNull()
+        public void GetLongestSubSequence_WordsAreEmpty_ReturnNull()
         {
             string target = "abppplee";
             string[] words = {};
 
             var result = target.GetLongestSubSequence(words);
 
-            Assert.Null(result);
+            Assert.Empty(result);
         }
 
         [Fact]
-        public void GetLongestWordInSequence_WordsAreNull_ThrowEx()
+        public void GetLongestSubSequence_WordsAreNull_ThrowEx()
         {
             string target = null;
             string[] words = null;

@@ -12,8 +12,19 @@ namespace GoogleDevGuide.Extension
 
         public static string GetLongestSubSequence(this string str, List<string> words)
         {
-            string result = null;
-        
+            string result = string.Empty;
+
+            foreach (var word in words)
+            {
+                if(str.IsSubSequence(word))
+                {
+                    if (word.Length>result.Length)
+                    {
+                        result = word;
+                    }
+                }
+            }
+
             return result;
         }
 

@@ -6,9 +6,6 @@ namespace GoogleDevGuide
     {
         static void Main(string[] args)
         {
-            string sss;
-      
-
             Console.WriteLine("Hello World!");
         }
     }
