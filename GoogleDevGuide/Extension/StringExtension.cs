@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GoogleDevGuide.Extension
 {
-    public static class StringEx
+    public static class StringExtension
     {
         public static string GetLongestSubSequence(this string str, string[] words)
         {
@@ -46,6 +46,13 @@ namespace GoogleDevGuide.Extension
             }
 
             return string.Equals(result, word);
+        }
+
+        public static string Decompress(this string str)
+        {
+            string result = null;
+
+            return result;
         }
     }
 }
