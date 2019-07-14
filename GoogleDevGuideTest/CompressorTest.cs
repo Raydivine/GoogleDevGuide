@@ -102,7 +102,7 @@ namespace GoogleDevGuideTest
         /// therefore we don't do compression 
         /// </summary>
         [Fact]
-        public void Compress_PartternTwoWordsReapatedTwice_ReturnInput()
+        public void Compress_PatternTwoWordsReapatedTwice_ReturnInput()
         {
             string input = "abab";
 
@@ -121,7 +121,7 @@ namespace GoogleDevGuideTest
         /// therefore we do compression 
         /// </summary>
         [Fact]
-        public void Compress_PartternTwoWordsReapatedThreeTimes_ReturnInput()
+        public void Compress_PatternTwoWordsReapatedThreeTimes_ReturnInput()
         {
             string input = "ababab";
             string expected = "3[ab]";
@@ -141,7 +141,7 @@ namespace GoogleDevGuideTest
         /// therefore we don't do compression 
         /// </summary>
         [Fact]
-        public void Compress_PartternThreeWordsReapatedTwice_ReturnInput()
+        public void Compress_PatternThreeWordsReapatedTwice_ReturnInput()
         {
             string input = "abcabc";
 
@@ -160,7 +160,7 @@ namespace GoogleDevGuideTest
         /// therefore we do compression 
         /// </summary>
         [Fact]
-        public void Compress_PartternThreeWordsReapatedThreeTimes_ReturnInput()
+        public void Compress_PatternThreeWordsReapatedThreeTimes_ReturnInput()
         {
             string input = "abcabcabc";
             string expected = "3[abc]";
@@ -181,7 +181,7 @@ namespace GoogleDevGuideTest
         /// therefore we do compression 
         /// </summary>
         [Fact]
-        public void Compress_PartternFourWordsReapatedTwice_ReturnInput()
+        public void Compress_PatternFourWordsReapatedTwice_ReturnInput()
         {
             string input = "abcdabcd";
             string expected = "2[abcd]";

@@ -4,6 +4,14 @@ namespace GoogleDevGuide
 {
     public class Compressor : ICompressor
     {
+        /// <summary>
+        /// 
+        /// 1. Checking if string length less than 5. In that case, we know that encoding will not help.
+        /// 2. Loop for trying all results that we get after dividing the strings into 2 and combine the results of 2 substrings
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public string Compress(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -18,31 +26,22 @@ namespace GoogleDevGuide
                 for (int i = 0; i < input.Length - z; i++)
                 {
                     int j = i + z;
-                    string substr = input.Substring(i, j - i + 1);
-                    // Checking if string length < 5. In that case, we know that encoding will not help.
-
+                    string substr = input.Substring(i, z + 1);
                     dp[i, j] = substr;
 
                     if (j - i >= 4)
                     {                      
-                        // Loop for trying all results that we get after dividing the strings into 2 and combine the results of 2 substrings
                         for (int k = i; k < j; k++)
                         {
-                            string a1 = dp[i, k];
-                            string b1 = dp[k + 1, j];
-                            string c1 = dp[i, j];
-
                             if ((dp[i, k] + dp[k + 1, j]).Length < dp[i, j].Length)
                             {
                                 dp[i, j] = dp[i, k] + dp[k + 1, j];
                             }
                         }
-
                         this.EncodeStringIn(dp, substr, i, j);
                     }
                 }
             }
-
             return dp[0, input.Length - 1];
         }
 
