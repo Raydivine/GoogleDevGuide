@@ -2,6 +2,7 @@
 using Xunit;
 using GoogleDevGuide;
 using GoogleDevGuide.Interface;
+using GoogleDevGuideTest.Common;
 
 namespace GoogleDevGuideTest
 {
@@ -129,7 +130,6 @@ namespace GoogleDevGuideTest
             Assert.Equal(expected, result);
         }
 
-
         /// <summary>
         /// Given there is repeated pattern of 3 words
         /// Do compression when repeated above 3 times
@@ -251,13 +251,120 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
-        public void EncodeStringIn_ArrayIsEmpty_()
+        public void EncodeStringIn_ArrayIsEmpty_ThrowEx()
         {
             int i = 0;
             int j = 0;
+            string input = null;
+            string[,] dp = null;
+
+            Assert.Throws<NullReferenceException>(() => _ICompressor.EncodeStringIn(dp, input, i, j));
+        }
+
+        [Fact]
+        public void EncodeStringIn_SubStringIsNull_ThrowEx()
+        {
+            int i = 0;
+            int j = 0;
+            string input = null;
             string[,] dp = new string[3, 3];
 
-            Assert.Throws<ArgumentNullException>(() => _ICompressor.EncodeStringIn(dp, string.Empty, i, j));
+            Assert.Throws<NullReferenceException>(() => _ICompressor.EncodeStringIn(dp, input, i, j));
+        }
+
+        [Fact]
+        public void EncodeStringIn_RangeOutOfArray_ThrowEx()
+        {
+            int i = 4;
+            int j = 4;
+            string input = "qwwerewrtfdsfd";
+            string[,] dp = new string[3, 3];
+
+            Assert.Throws<IndexOutOfRangeException>(() => _ICompressor.EncodeStringIn(dp, input, i, j));
+        }
+
+        [Fact]
+        public void EncodeStringIn_SubStringCantEncode_DoNothing()
+        {
+            string input = "abc";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length - 1);
+            Assert.Equal(input, dp[0, dp.GetLength(0) - 1]);
+        }
+
+        [Fact]
+        public void EncodeStringIn_OneCharacterCantEncode_DoNothing()
+        {
+            string input = "aaaa";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length - 1);
+            Assert.Equal(input, dp[0, dp.GetLength(0) - 1]);
+        }
+
+        [Fact]
+        public void EncodeStringIn_TwoCharacterCantEncode_DoNothing()
+        {
+            string input = "abab";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length - 1);
+            Assert.Equal(input, dp[0, dp.GetLength(0) - 1]);
+        }
+
+        [Fact]
+        public void EncodeStringIn_ThreeCharacterCantEncode_DoNothing()
+        {
+            string input = "abcabc";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length - 1);
+            Assert.Equal(input, dp[0, dp.GetLength(0) - 1]);
+        }
+
+        [Fact]
+        public void EncodeStringIn_SubStringCanEncode_Encoded()
+        {
+            string input = "aaaaa";
+            string expected = "5[a]";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length-1);
+            Assert.Equal(expected, dp[0, dp.GetLength(0) - 1]);
+        }
+
+        [Fact]
+        public void EncodeStringIn_TwoCharacter_Encoded()
+        {
+            string input = "ababab";
+            string expected = "3[ab]";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length - 1);
+            Assert.Equal(expected, dp[0, dp.GetLength(0) - 1]);
+        }
+
+        [Fact]
+        public void EncodeStringIn_ThreeCharacter_Encoded()
+        {
+            string input = "abcabcabc";
+            string expected = "3[abc]";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length - 1);
+            Assert.Equal(expected, dp[0, dp.GetLength(0) - 1]);
+        }
+
+        [Fact]
+        public void EncodeStringIn_FourCharacter_Encoded()
+        {
+            string input = "abcdabcd";
+            string expected = "2[abcd]";
+            string[,] dp = Tools.GetComboArr(input);
+
+            _ICompressor.EncodeStringIn(dp, input, 0, input.Length - 1);
+            Assert.Equal(expected, dp[0, dp.GetLength(0) - 1]);
         }
     }
 }

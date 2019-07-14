@@ -7,7 +7,9 @@ namespace GoogleDevGuide.Interface
     public interface ICompressor
     {
         string Compress(string input);
+
         string Decompress(string input);
+
         void EncodeStringIn(string[,] dp, string substr, int i, int j);
     }
 }

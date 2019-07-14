@@ -93,9 +93,7 @@ namespace GoogleDevGuideTest
         }
 
         [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        [InlineData(" ")]
+        [MemberData(nameof(BlankStrings))]
         public void IsSubSequence_TargetIsNullOrEmptyOrWhiteSpace_ReturnFalse(string target)
         {
             string word = "appled";
@@ -105,9 +103,7 @@ namespace GoogleDevGuideTest
         }
 
         [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        [InlineData(" ")]
+        [MemberData(nameof(BlankStrings))]
         public void IsSubSequence_WordIsNullOrEmptyOrWhiteSpace_ReturnFalse(string word)
         {
             string target = "abppplee";
@@ -115,5 +111,13 @@ namespace GoogleDevGuideTest
             var result = target.IsSubSequence(word);
             Assert.False(result);
         }
+
+        public static System.Collections.Generic.IEnumerable<object[]> BlankStrings
+           => new[]
+           {
+                new object[] { null },
+                new object[] { "" },
+                new object[] { " " }
+           };    
     }
 }
