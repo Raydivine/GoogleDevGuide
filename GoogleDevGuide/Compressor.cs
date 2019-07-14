@@ -1,7 +1,4 @@
 ﻿using GoogleDevGuide.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GoogleDevGuide
 {
@@ -9,9 +6,12 @@ namespace GoogleDevGuide
     {
         public string Compress(string input)
         {
-            string result = null;
+            return input;       
+        }
 
-            return result;
+        public void EncodeStringIn(string[,] dp, string substr, int i, int j)
+        {
+
         }
 
         public string Decompress(string input)
