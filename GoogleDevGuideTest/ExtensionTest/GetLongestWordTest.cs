@@ -92,21 +92,25 @@ namespace GoogleDevGuideTest
             Assert.False(result);
         }
 
-        [Fact]
-        public void IsSubSequence_WordIsNull_ReturnFalse()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsSubSequence_TargetIsNullOrEmptyOrWhiteSpace_ReturnFalse(string target)
         {
-            string target = "abppplee";
-            string word = null;
+            string word = "appled";
 
             var result = target.IsSubSequence(word);
             Assert.False(result);
         }
 
-        [Fact]
-        public void IsSubSequence_BothIsNull_ReturnFalse()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsSubSequence_WordIsNullOrEmptyOrWhiteSpace_ReturnFalse(string word)
         {
-            string target = null;
-            string word = null;
+            string target = "abppplee";
 
             var result = target.IsSubSequence(word);
             Assert.False(result);
