@@ -1,9 +1,16 @@
-﻿using GoogleDevGuide.Interface;
+﻿using GoogleDevGuide.Extension;
+using GoogleDevGuide.Interface;
+using System;
+using System.Text.RegularExpressions;
 
 namespace GoogleDevGuide
 {
     public class Compressor : ICompressor
     {
+        private Regex _multiZipped = new Regex(@"\d+\[[^][]+\]");
+        private Regex _singleZipped = new Regex(@"^\d+\[([^][]+)\]$");
+
+
         /// <summary>
         /// 
         /// 1. Checking if string length less than 5. In that case, we know that encoding will not help.
@@ -14,7 +21,7 @@ namespace GoogleDevGuide
         /// <returns></returns>
         public string Compress(string input)
         {
-            if (string.IsNullOrEmpty(input))
+            if (string.IsNullOrWhiteSpace(input))
             {
                 return input;
             }
@@ -64,11 +71,37 @@ namespace GoogleDevGuide
             }
         }
 
-        public string Decompress(string input)
+        public string Extract(string input)
         {
-            string result = null;
+            if(input != null)
+            {
+                while(_multiZipped.IsMatch(input))
+                {
+                    input = _multiZipped.Replace(input, Decode);
+                }
+            }
 
-            return result;
+            return input;
+        }
+
+        public string Decode(Match match)
+        {
+            return Decode(match.Value);
+        }
+  
+
+        public string Decode(string input)
+        {        
+            if (input == null || ! _singleZipped.IsMatch(input))
+            {
+                return input;
+            }
+
+            string word = _singleZipped.Match(input).Groups[1].Value;
+
+            int num = int.Parse(input.Substring(0, input.IndexOf("[")));
+
+            return word.Repeat(num);
         }
     }
 }

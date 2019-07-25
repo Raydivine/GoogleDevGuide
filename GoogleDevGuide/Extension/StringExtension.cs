@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace GoogleDevGuide.Extension
 {
@@ -33,8 +34,11 @@ namespace GoogleDevGuide.Extension
             string result = null;
             int j = 0;
 
-            if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(word))
+            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(word))
+            {
                 return false;
+            }
+                
 
             for (int i = 0; i < str.Length && j < word.Length; i++)
             {
@@ -48,11 +52,11 @@ namespace GoogleDevGuide.Extension
             return string.Equals(result, word);
         }
 
-        public static string Decompress(this string str)
+        public static string Repeat(this string s, int n)
         {
-            string result = null;
-
-            return result;
+            return new StringBuilder(s.Length * n)
+                            .AppendJoin(s, new string[n + 1])
+                            .ToString();
         }
     }
 }
