@@ -1,9 +1,8 @@
-﻿using System;
-using Xunit;
-using GoogleDevGuide;
+﻿using GoogleDevGuide;
 using GoogleDevGuide.Interface;
 using GoogleDevGuideTest.Common;
-using System.Text.RegularExpressions;
+using System;
+using Xunit;
 
 namespace GoogleDevGuideTest
 {
