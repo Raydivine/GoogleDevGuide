@@ -72,6 +72,28 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
+        public void GetLongestSubSequence_MatchIgnoreSensitiveResult_ReturnResult()
+        {
+            string target = "aabbcc";
+            string[] words = { "BB", "BBB", "BBBB" };
+
+            var result = target.GetLongestSubSequence(words, StringComparison.CurrentCultureIgnoreCase);
+
+            Assert.Equal("BB", result);
+        }
+
+        [Fact]
+        public void GetLongestSubSequence_DiffSequence_ReturnEmpty()
+        {
+            string target = "cba";
+            string[] words = { "abc", "acb", "cab" };
+
+            var result = target.GetLongestSubSequence(words, StringComparison.CurrentCultureIgnoreCase);
+
+            Assert.Equal(string.Empty, result);
+        }
+
+        [Fact]
         public void IsSubSequence_Match_ReturnTrue()
         {
             string target = "abppplee";
@@ -111,5 +133,42 @@ namespace GoogleDevGuideTest
             var result = target.IsSubSequence(word);
             Assert.False(result);
         }
+
+        [Fact]
+        public void IsSubSequence_BothSameIgnoreCaseSensitive_Returntrue()
+        {
+            string target = "ab";
+            string word = "AB";
+
+            var result = target.IsSubSequence(word, StringComparison.CurrentCultureIgnoreCase);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsSubSequence_MatchChinese_ReturnFalse()
+        {
+            string target = "你们我们他们";
+            string word = "你们我";
+
+            var result = target.IsSubSequence(word);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsSubSequence_MatchSymbol_ReturnFalse()
+        {
+            string target = "!@#$%^&";
+            string word = "@#$";
+
+            var result = target.IsSubSequence(word);
+
+            Assert.True(result);
+        }
+
     }
+
+
+
 }
