@@ -13,19 +13,14 @@ namespace GoogleDevGuide
         public double LakeSizeCalculate(double[] groundHeights)
         {
             double sum = 0;
-            List<double> grounds = new List<double>();
+            int i = 0;
 
-            if (groundHeights != null || groundHeights.Length >= 3)
+            if (groundHeights != null && groundHeights.Length >= 3)
             {
-                for (int i = 0; i < groundHeights.Length; i++)
+                while (groundHeights.Length - i > 1) 
                 {
-                    startPeak = groundHeights[i];
-
-                    if (groundHeights[i + 1] >= startPeak)
-                    {
-                        continue;
-                    }
-                }
+                    sum += this.GetSizeBetweenPeaks(groundHeights, ref i);
+                } 
             }
 
             return sum;
@@ -33,27 +28,31 @@ namespace GoogleDevGuide
 
         private double GetSizeBetweenPeaks(double[] groundHeights, ref int i)
         {
-            double lakeSize = 0, startPeak, current, endPeak, shorterPeak;
+            double lakeSize = 0;
             var floors = new List<double>();
-
+          
             if (IsThereVolume(groundHeights, i))
             {
-                startPeak = groundHeights[i++];
+                int start = i++;
+                int end = i;
 
                 do
                 {
-                    current = groundHeights[i];
-                    floors.Add(current);
-                    endPeak = groundHeights[++i];
+                    floors.Add(groundHeights[i++]);
+                    end = groundHeights[i] > floors.Max() ? i : end;
 
-                } while (groundHeights.Length - i > 1 && endPeak < startPeak);
+                } while (i < groundHeights.Length - 1 && groundHeights[end] < groundHeights[start]);
 
-                shorterPeak = (startPeak <= endPeak) ? startPeak : endPeak;
+                double shorterPeak = (groundHeights[start] <= groundHeights[end]) ? groundHeights[start] : groundHeights[end];
 
-                foreach (var floor in floors)
+                for (int j = start+1; j < end; j++)
                 {
-                    lakeSize += (shorterPeak - floor);
+                    lakeSize += (shorterPeak - groundHeights[j]);
                 }
+            }
+            else
+            {
+                i++;
             }
 
             return lakeSize;
@@ -65,10 +64,9 @@ namespace GoogleDevGuide
                 groundHeights.Length - i >= 3 &&
                 groundHeights[i] > groundHeights[i + 1])
             {
-                var list = groundHeights.ToList();
-                list.RemoveRange(0, i + 2);
+                double[] elmntsAfter = groundHeights.Skip(i + 2).ToArray();
 
-                if (list.Any(x => x > groundHeights[i + 1]))
+                if (elmntsAfter.Any(x => x > groundHeights[i+1]))
                 {
                     return true;
                 }
