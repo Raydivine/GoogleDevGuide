@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GoogleDevGuide
 {
-    public class LakeSizeCalculator
+    public class LakeVolumeSolver
     {
         /// <summary>
         /// https://techdevguide.withgoogle.com/paths/advanced/volume-of-water/#!
@@ -17,10 +17,10 @@ namespace GoogleDevGuide
 
             if (groundHeights != null && groundHeights.Length >= 3)
             {
-                while (groundHeights.Length - i > 1) 
+                while (groundHeights.Length - i > 1)
                 {
                     sum += this.GetSizeBetweenPeaks(groundHeights, ref i);
-                } 
+                }
             }
 
             return sum;
@@ -30,7 +30,7 @@ namespace GoogleDevGuide
         {
             double lakeSize = 0;
             var floors = new List<double>();
-          
+
             if (IsThereVolume(groundHeights, i))
             {
                 int start = i++;
@@ -45,7 +45,7 @@ namespace GoogleDevGuide
 
                 double shorterPeak = (groundHeights[start] <= groundHeights[end]) ? groundHeights[start] : groundHeights[end];
 
-                for (int j = start+1; j < end; j++)
+                for (int j = start + 1; j < end; j++)
                 {
                     lakeSize += (shorterPeak - groundHeights[j]);
                 }
@@ -66,7 +66,7 @@ namespace GoogleDevGuide
             {
                 double[] elmntsAfter = groundHeights.Skip(i + 2).ToArray();
 
-                if (elmntsAfter.Any(x => x > groundHeights[i+1]))
+                if (elmntsAfter.Any(x => x > groundHeights[i + 1]))
                 {
                     return true;
                 }

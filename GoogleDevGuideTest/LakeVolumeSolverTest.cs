@@ -6,13 +6,13 @@ using Xunit;
 
 namespace GoogleDevGuideTest
 {
-    public class LakeSizeCalculatorTest
+    public class LakeVolumeSolverTest
     {
-        LakeSizeCalculator _calculator;
+        LakeVolumeSolver _calculator;
 
-        public LakeSizeCalculatorTest()
+        public LakeVolumeSolverTest()
         {
-            this._calculator = new LakeSizeCalculator();
+            this._calculator = new LakeVolumeSolver();
         }
 
         [Theory]
@@ -94,14 +94,14 @@ namespace GoogleDevGuideTest
         }      
     }
 
-    public class LakeSizeCalculatorPrvtMthdTest
+    public class LakeVolumeSolverPrvtMthdTest
     {
         object _obj;
         Type _type;
 
-        public LakeSizeCalculatorPrvtMthdTest()
+        public LakeVolumeSolverPrvtMthdTest()
         {
-            _type = typeof(LakeSizeCalculator);
+            _type = typeof(LakeVolumeSolver);
             _obj = Activator.CreateInstance(_type);
         }
 
