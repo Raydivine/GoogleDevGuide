@@ -12,22 +12,19 @@ namespace GoogleDevGuide
         /// <returns></returns>
         public double LakeSizeCalculate(double[] groundHeights)
         {
-            double sum = 0, lakeSize = 0, startPeak = 0, endPeak = 0;
+            double sum = 0;
             List<double> grounds = new List<double>();
 
-
-            if (groundHeights == null || groundHeights.Length < 3)
+            if (groundHeights != null || groundHeights.Length >= 3)
             {
-                return sum;
-            }
-
-            for (int i = 0; i < groundHeights.Length; i++)
-            {
-                startPeak = groundHeights[i];
-
-                if (groundHeights[i + 1] >= startPeak)
+                for (int i = 0; i < groundHeights.Length; i++)
                 {
-                    continue;
+                    startPeak = groundHeights[i];
+
+                    if (groundHeights[i + 1] >= startPeak)
+                    {
+                        continue;
+                    }
                 }
             }
 

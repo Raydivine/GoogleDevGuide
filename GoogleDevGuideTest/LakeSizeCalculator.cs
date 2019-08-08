@@ -150,9 +150,18 @@ namespace GoogleDevGuideTest
         }
 
         [Theory]
+        [InlineData(new double[0], 0)]
+        [InlineData(new double[3] { 0, 0, 0 }, 0)]
+        [InlineData(null, 0)]
         [InlineData(new double[3] { 3, 3, 3 }, 0)]
         [InlineData(new double[3] { 3, 2, 2 }, 0)]
         [InlineData(new double[3] { 3, 2, 1 }, 0)]
+        [InlineData(new double[3] { 1, 2, 3 }, 0)]
+        [InlineData(new double[3] { 1, 1, 3 }, 0)]
+        [InlineData(new double[4] { 1, 1, 3, 4 }, 0)]
+        [InlineData(new double[5] { 1, 2, 3, 5, 6 }, 0)]
+        [InlineData(new double[6] { 3, 1, 3, 2, 2, 2 }, 3)]
+        [InlineData(new double[6] { 3, 3, 3, 2, 1, 1 }, 3)]
         public void GetSizeBetweenPeaks_NoPeaks_Return0(double[] groundHeights, int i)
         {
             MethodInfo method = _type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
@@ -165,48 +174,20 @@ namespace GoogleDevGuideTest
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void GetSizeBetweenPeaks_OneValue_ReturnResult()
+        [Theory]
+        [InlineData(new double[3] { 3, 0, 3 }, 0)]
+        [InlineData(new double[3] { 4, 1, 7 }, 0)]
+        [InlineData(new double[4] { 3, 1, 2, 5}, 0)]
+        [InlineData(new double[5] { 2, 1, 1, 1, 2 }, 0)]
+        [InlineData(new double[6] { 3, 1, 3, 3, 0, 5 }, 3)]
+        [InlineData(new double[8] { 3, 1, 3, 3, 2, 2, 2, 7 }, 3)]
+        public void GetSizeBetweenPeaks_LakeSizeIs3_ReturnResult(double[] groundHeights, int i)
         {
             MethodInfo method = _type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
             .Where(x => x.Name == "GetSizeBetweenPeaks" && x.IsPrivate)
             .First();
 
-            int i = 0;
-            double[] groundHeights = new double[3] { 3, 0, 3 };
             double expected = 3;
-
-            double result = (double)method.Invoke(_obj, new object[] { groundHeights, i });
-
-            Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void GetSizeBetweenPeaks_OneValueCase2_ReturnResult()
-        {
-            MethodInfo method = _type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
-            .Where(x => x.Name == "GetSizeBetweenPeaks" && x.IsPrivate)
-            .First();
-
-            int i = 0;
-            double[] groundHeights = new double[3] { 3, 2, 8 };
-            double expected = 1;
-
-            double result = (double)method.Invoke(_obj, new object[] { groundHeights, i });
-
-            Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void GetSizeBetweenPeaks_LakeSizeTwo_ReturnResult()
-        {
-            MethodInfo method = _type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
-            .Where(x => x.Name == "GetSizeBetweenPeaks" && x.IsPrivate)
-            .First();
-
-            int i = 0;
-            double[] groundHeights = new double[4] { 3, 0, 1, 3 };
-            double expected = 3 + 2;
 
             double result = (double)method.Invoke(_obj, new object[] { groundHeights, i });
 
