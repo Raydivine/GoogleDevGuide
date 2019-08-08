@@ -1,9 +1,8 @@
-﻿using System;
-using Xunit;
-using GoogleDevGuide;
+﻿using GoogleDevGuide;
 using GoogleDevGuide.Interface;
 using GoogleDevGuideTest.Common;
-using System.Text.RegularExpressions;
+using System;
+using Xunit;
 
 namespace GoogleDevGuideTest
 {
@@ -671,7 +670,7 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
-        public void Decode_ZippedTwoChar_ReturnDecodeedResult()
+        public void Decode_ZippedTwoChar_ReturnDecodedResult()
         {
             string input = "4[ab]";
             string expected = "abababab";
@@ -682,7 +681,7 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
-        public void Decode_ZippedThreeChar_ReturnDecodeedResult()
+        public void Decode_ZippedThreeChar_ReturnDecodedResult()
         {
             string input = "3[abc]";
             string expected = "abcabcabc";
@@ -693,7 +692,7 @@ namespace GoogleDevGuideTest
         }
 
         [Fact]
-        public void Decode_ZippedFourChar_ReturnDecodeedResult()
+        public void Decode_ZippedFourChar_ReturnDecodedResult()
         {
             string input = "2[abcd]";
             string expected = "abcdabcd";

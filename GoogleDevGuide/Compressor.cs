@@ -89,7 +89,6 @@ namespace GoogleDevGuide
             return Decode(match.Value);
         }
   
-
         public string Decode(string input)
         {        
             if (input == null || ! _singleZipped.IsMatch(input))
