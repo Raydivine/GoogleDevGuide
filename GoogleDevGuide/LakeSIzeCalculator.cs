@@ -1,10 +1,9 @@
-﻿using GoogleDevGuide.Interface;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace GoogleDevGuide
 {
-    public class PuzzleSolver : IPuzzleSolver
+    public class LakeSizeCalculator
     {
         /// <summary>
         /// https://techdevguide.withgoogle.com/paths/advanced/volume-of-water/#!
@@ -17,7 +16,7 @@ namespace GoogleDevGuide
             List<double> grounds = new List<double>();
 
 
-            if(groundHeights == null || groundHeights.Length < 3)
+            if (groundHeights == null || groundHeights.Length < 3)
             {
                 return sum;
             }
@@ -26,7 +25,7 @@ namespace GoogleDevGuide
             {
                 startPeak = groundHeights[i];
 
-                if (groundHeights[i+1] >= startPeak)
+                if (groundHeights[i + 1] >= startPeak)
                 {
                     continue;
                 }
@@ -35,12 +34,12 @@ namespace GoogleDevGuide
             return sum;
         }
 
-        private double GetSumOfVolumeBetweenTwoPeak(double[] groundHeights, ref int i)
+        private double GetSizeBetweenPeaks(double[] groundHeights, ref int i)
         {
-            double lakeSize = 0, startPeak , current, endPeak, shorterPeak;
+            double lakeSize = 0, startPeak, current, endPeak, shorterPeak;
             var floors = new List<double>();
 
-            if (IsThereVolume(groundHeights,i))
+            if (IsThereVolume(groundHeights, i))
             {
                 startPeak = groundHeights[i++];
 
@@ -67,15 +66,15 @@ namespace GoogleDevGuide
         {
             if (groundHeights != null &&
                 groundHeights.Length - i >= 3 &&
-                groundHeights[i] > groundHeights[i+1])
+                groundHeights[i] > groundHeights[i + 1])
             {
                 var list = groundHeights.ToList();
                 list.RemoveRange(0, i + 2);
-     
-                if(list.Any(x => x > groundHeights[i+1]))
+
+                if (list.Any(x => x > groundHeights[i + 1]))
                 {
                     return true;
-                }           
+                }
             }
 
             return false;
