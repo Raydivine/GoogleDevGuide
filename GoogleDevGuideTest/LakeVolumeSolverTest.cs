@@ -18,7 +18,6 @@ namespace GoogleDevGuideTest
         [Theory]
         [InlineData(new double[0])]
         [InlineData(new double[3]{0,0,0})]
-        [InlineData(null)]
         public void LakeSizeCalculate_emptyInput_Return0(double[] groundHeights)
         {
             double expected = 0;
