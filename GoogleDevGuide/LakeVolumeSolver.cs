@@ -12,18 +12,29 @@ namespace GoogleDevGuide
         /// <returns></returns>
         public double LakeSizeCalculate(double[] groundHeights)
         {
-            double sum = 0;
-            int i = 0;
+            double result = 0, current;
+            int start = 0, end = groundHeights.Length - 1;
 
-            if (groundHeights != null && groundHeights.Length >= 3)
+            while(start<end)
             {
-                while (groundHeights.Length - i > 1)
+                if (groundHeights[start] <= groundHeights[end])
                 {
-                    sum += this.GetSizeBetweenPeaks(groundHeights, ref i);
+                    current = groundHeights[start];
+                    while (groundHeights[++start] < current)
+                    {
+                        result += current - groundHeights[start];
+                    }
+                }
+                else
+                {
+                    current = groundHeights[end];
+                    while (groundHeights[--end] < current)
+                    {
+                        result += current - groundHeights[end];
+                    }
                 }
             }
-
-            return sum;
+            return result;
         }
 
         private double GetSizeBetweenPeaks(double[] groundHeights, ref int i)

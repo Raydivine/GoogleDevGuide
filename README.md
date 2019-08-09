@@ -5,16 +5,12 @@ Personal partime pratice for Google Dev Guide's questions, on-going while free (
 Question 1:
 <a href="https://techdevguide.withgoogle.com/paths/advanced/compress-decompression/#!">Compression and Decompression </a>
 
-My
 <a href="https://github.com/RaysternWong/GoogleDevGuide/blob/master/GoogleDevGuide/Compressor.cs">Source Code </a><br/>
-My
 <a href="https://github.com/RaysternWong/GoogleDevGuide/blob/master/GoogleDevGuideTest/CompressorTest.cs">Test Code </a>
 
 Question 2:
 <a href="https://techdevguide.withgoogle.com/paths/advanced/volume-of-water/#!">Find the Volume of Each Lake Created by Rainwater </a><br/>
-My
 <a href="https://github.com/RaysternWong/GoogleDevGuide/blob/master/GoogleDevGuide/LakeVolumeSolver.cs">Source Code </a><br/>
-My
 <a href="https://github.com/RaysternWong/GoogleDevGuide/blob/master/GoogleDevGuideTest/LakeVolumeSolverTest.cs">Test Code </a>
 
 <h2>Framework</h2>
