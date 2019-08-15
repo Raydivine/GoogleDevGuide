@@ -4,6 +4,5 @@ namespace GoogleDevGuide.Interface
 {
     public interface IPuzzleSolver
     {
-        double LakeSizeCalculate(double[] groundHeights);
     }
 }

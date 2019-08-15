@@ -6,19 +6,9 @@ using Xunit;
 
 namespace GoogleDevGuideTest
 {
-    public class CompressorTest : IDisposable
+    public class CompressorTest 
     {
-        ICompressor _ICompressor;
-
-        public CompressorTest()
-        {
-            _ICompressor = new Compressor();
-        }
-
-        public void Dispose()
-        {
-
-        }
+        readonly ICompressor _ICompressor = new Compressor();
 
         [Theory]
         [InlineData("")]

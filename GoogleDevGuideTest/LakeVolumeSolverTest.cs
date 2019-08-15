@@ -8,26 +8,11 @@ namespace GoogleDevGuideTest
 {
     public class LakeVolumeSolverTest
     {
-        LakeVolumeSolver _calculator;
-
-        public LakeVolumeSolverTest()
-        {
-            this._calculator = new LakeVolumeSolver();
-        }
+        readonly LakeVolumeSolver _calculator = new LakeVolumeSolver();
 
         [Theory]
         [InlineData(new double[0])]
-        [InlineData(new double[3]{0,0,0})]
-        public void LakeSizeCalculate_emptyInput_Return0(double[] groundHeights)
-        {
-            double expected = 0;
-           
-            double result = _calculator.LakeSizeCalculate(groundHeights);
-
-            Assert.Equal(expected, result);
-        }
-
-        [Theory]
+        [InlineData(new double[3] { 0, 0, 0 })]
         [InlineData(new double[1] { 3 })]
         [InlineData(new double[2] { 3, 7 })]
         [InlineData(new double[3] { 2, 3, 7 })]
@@ -40,7 +25,7 @@ namespace GoogleDevGuideTest
         [InlineData(new double[4] { 1, 1, 3, 4 })]
         [InlineData(new double[5] { 1, 2, 3, 5, 6 })]
         [InlineData(new double[6] { 3, 3, 3, 2, 1, 1 })]
-        public void LakeSizeCalculate_CannotFormLake_Return0(double[] groundHeights)
+        public void LakeSizeCalculate_CannotFormLake_ReturnZero(double[] groundHeights)
         {
             double expected = 0;
 
@@ -95,8 +80,8 @@ namespace GoogleDevGuideTest
 
     public class LakeVolumeSolverPrvtMthdTest
     {
-        object _obj;
-        Type _type;
+        readonly object _obj;
+        readonly Type _type;
 
         public LakeVolumeSolverPrvtMthdTest()
         {

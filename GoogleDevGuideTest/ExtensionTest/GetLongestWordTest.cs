@@ -4,17 +4,8 @@ using Xunit;
 
 namespace GoogleDevGuideTest
 {
-    public class GetLongestWordTest : IDisposable
+    public class GetLongestWordTest
     {
-        public GetLongestWordTest()
-        {
-        }
-
-        public void Dispose()
-        {
-
-        }
-
         /// <summary>
         /// MethodName_StateUnderTest_ExpectedBehavior
         /// </summary>
